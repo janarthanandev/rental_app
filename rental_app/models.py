@@ -1,7 +1,7 @@
 from django.contrib.auth.models import AbstractUser
-from django.contrib.auth import get_user_model
+# from django.contrib.auth import get_user_model
 from django.db import models
-
+from django.contrib.auth.models import Permission, User
 
 class Home(models.Model):
     RENTSTATUS = (
@@ -16,16 +16,18 @@ class Home(models.Model):
     advance_expected = models.IntegerField()
     image_url = models.ImageField()
     rental_status = models.CharField(max_length=20, choices=RENTSTATUS)
-    # created_by = models.ForeignKey(get_user_model(),on_delete=models.CASCADE)
+    created_by = models.ForeignKey(User, on_delete=models.CASCADE)
+    # user = models.OneToOneField(User, on_delete=models.CASCADE)
+
 
     def __str__(self):
         return self.name
 
-class CustomUser(AbstractUser):
-    pass
-    class Meta:
-        db_table = 'auth_user'
+# class CustomUser(AbstractUser):
+#     is_staff = models.BooleanField(default=False)
+#     # class Meta:
+#     #     db_table = 'auth_user'
     
 
-    def __str__(self):
-        return self.username
+#     def __str__(self):
+#         return self.username

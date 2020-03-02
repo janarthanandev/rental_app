@@ -19,11 +19,11 @@ def rented(request, id):
     home = Home.objects.get(pk=id)
     print(home.rental_status)
     messages.success(request, "You have rented " + home.name + "!")
-    # if home.rental_status == 'avail':
-    #     home.rental_status -= 'navail'
-    #     messages.success(request, "You have rented " + home.name + "!")
-    # else:
-    #     messages.success(request, "Home is not available for rent " + home.name + "!")
+    if home.rental_status == 'avail':
+        home.rental_status = 'navail'
+        messages.success(request, "You have rented " + home.name + "!")
+    else:
+        messages.success(request, "Home is not available for rent " + home.name + "!")
     home.save()
     return redirect('rental_app:rent')
 
