@@ -32,7 +32,7 @@
                     <div><b>{{ home.name }}</b></div>
                     <div>Rent Amount: ${{ home.rent_expected }}</div>
                     <div>Availablity: {{ home.rental_status }}</div>
-                    <form action="{% url 'rental_project:rented' id=home.id %}" style="display:inline!important;">
+                    <form action="{% url 'rental_app:rented' id=home.id %}" style="display:inline!important;">
                         <input value="Rent it" type="submit"></input>
                     </form>
                 </div>

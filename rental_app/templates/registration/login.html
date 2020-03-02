@@ -15,23 +15,20 @@
                     <p class="navbar-text">Rental App</p>
                 </div>
                 <ul class="nav navbar-nav">
-                    <li><a href="{% url 'rental_app:home' %}">Home</a></li>
+                    <!-- <li><a href="{% url 'rental_app:home' %}">Home</a></li> -->
                     <li><a href="{% url 'rental_app:rent' %}">Rent</a></li>
                 </ul>
             </div>
         </nav>
-        <!--Instructions-->
         <center><div><b>Welcome to Rental APP</b></div></center>
         <div id="rental_div">
             {% block content %}
-                 {% if user.is_authenticated %}
-                    Hi {{ user.username }}!
-                    <p><a href="{% url 'logout' %}">logout</a></p>
-                 {% else %}
-                    <p>You are not logged in</p>
-                    <a href="{% url 'login' %}">login</a> |
-                    <a href="{% url 'rental_app:signup' %}">signup</a>
-                {% endif %}
+            <h2>Login</h2>
+            <form method="post">
+              {% csrf_token %}
+              {{ form.as_p }}
+              <button type="submit">Login</button>
+            </form>
             {% endblock %}
         </div>
     </body> 

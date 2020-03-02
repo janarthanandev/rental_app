@@ -123,3 +123,5 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 AUTH_USER_MODEL = 'rental_app.CustomUser'
+LOGIN_REDIRECT_URL = 'rental_app/home'
+LOGOUT_REDIRECT_URL = 'rental_app/home'
